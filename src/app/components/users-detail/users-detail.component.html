@@ -1,0 +1,51 @@
+<div *ngIf="currentUsers" class="edit-form">
+    <h4>Users</h4>
+    <form>
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text"
+          class="form-control"
+          id="title"
+          [(ng Model)]="Users.name"
+          name="title"
+        />
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <input
+        type="text"
+        class="form-control"
+        id="description"
+        [(ng Model)]="Users.mail"
+        name="description"
+      />
+    </div>
+    <div class="form-group">
+      <label><strong>Status:</strong></label>
+      {{ currentUsers.disabled ? "disable" : "Pending" }}
+    </div>
+  </form>
+  <button class="badge badge-primary mr-2"
+  *ng If="currentUsers.disable"
+  (click)="updatedisabled(false)"
+>
+  Undisable
+</button>
+<button
+  *ng If="!Users.disable"
+  class="badge badge-primary mr-2"
+  (click)="updatedisabled(true)">
+  disable
+</button>
+<button mat-button color="primary" (click)="deleteUsers()">Delete</button>
+
+<button type="submit" class="badge badge-success" (click)="updateUsers()">
+  Update
+</button>
+<p>{{ message }}</p>
+</div>
+<div *ng If="!currentUsers">
+  <br />
+  <p>Cannot access this Tutorial...</p>
+</div>
+

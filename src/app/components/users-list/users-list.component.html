@@ -1,0 +1,27 @@
+<div class="list row">
+    <div class="col-md-6">
+      <h4>users List</h4>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let tutorial of users; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActiveUsers(tutorial, i)"
+        >
+          {{ users }}
+        </li>
+    </ul>
+  </div>
+  <div class="col-md-6">
+    <div *ng If="currentUsers">
+      
+        (refreshList)="refreshList()"
+        [tutorial]="currentUsers"
+    
+    </div>
+    <div *ng If="!currentUsers">
+      <br />
+      <p>Please click on a Tutorial...</p>
+    </div>
+  </div>
+</div>
